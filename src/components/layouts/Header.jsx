@@ -1,17 +1,28 @@
 import { Link } from "react-router-dom";
 import Button from "../common/Button.jsx";
 
-function Header() {
+/**
+ * @param {string} className - Custom styling that isn't accounted for (e.g, animations)
+ * @param {string} height - A class that defines the height (e.g., h-20)
+ * @param {string} bgClass - Tailwind background utilities, solid or gradient (e.g., "bg-black" or "bg-gradient-to-t from-black to-white")
+ * @param {string} bgColor - A class that determines the text's color (e.g., text-white)
+ * @param {string} borderThickness - Choose a valid tailwind border-size class (e.g., border-2)
+ * @param {string} borderColor - Choose a valid tailwind border color class (e.g., border-white)
+ * @param {boolean} bordered - Decides whether or not to show the borders at all (e.g., true)
+ */
+function Header({
+  children,
+  className="",
+  height="h-20",
+  bgClass="bg-black",
+  textColor="text-white",
+  borderThickness="border-2",
+  borderColor="border-white",
+  bordered=true
+}) {
   return (
-    <div className="bg-dark-blue w-full h-[72px] border border-slate flex items-center justify-between">
-      <Link to="/" className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent font-bold mx-16 text-4xl">HaHaHub</Link>
-      <div className="mx-16">
-        <Link to="/About">
-          <Button bgColor="bg-dark-blue" borderColor="border-purple-400" textColor="text-purple-400"> 
-            <p className="font-bold">About</p>
-          </Button>         
-        </Link>
-      </div>
+    <div className={`${bgClass} ${textColor} w-full ${height} ${borderThickness} ${borderColor} flex items-center justify-between ${className}`}>
+      {children}
     </div>
   );
 }
