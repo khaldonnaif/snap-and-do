@@ -1,5 +1,12 @@
+import MainLayout from "../components/layouts/MainLayout.jsx";
+
 function About() {
-  return <div>About Page</div>;
+
+  return (
+  <MainLayout>
+    <div>About Page</div>;
+  </MainLayout>
+  );
 }
 
 export default About;

@@ -1,10 +1,12 @@
 import Header from "../components/layouts/Header.jsx";
+import MainLayout from "../components/layouts/MainLayout.jsx";
 
 function Home() {
-  return 
-  (<>
+  return (
+  <MainLayout>
     <Header />
-  </>);
+  </MainLayout>
+  );
 }
 
 export default Home;
