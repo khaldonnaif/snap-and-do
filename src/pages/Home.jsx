@@ -4,7 +4,10 @@ import MainLayout from "../components/layouts/MainLayout.jsx";
 function Home() {
   return (
   <MainLayout>
-    <Header />
+    <Header>
+      uasdifh ufihsaf sduhfsd
+      <p>asdasdsad</p>
+    </Header>
   </MainLayout>
   );
 }

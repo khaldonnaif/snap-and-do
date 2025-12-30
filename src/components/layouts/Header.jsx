@@ -18,7 +18,7 @@ function Header({
   bordered=true
 }) {
   return (
-    <div className={`${bgClass} ${textColor} w-full ${height} ${borderThickness} ${borderColor} flex items-center justify-between ${className}`}>
+    <div className={`${bgClass} ${textColor} w-full ${height} px-12 ${borderThickness} ${borderColor} flex items-center justify-between ${className}`}>
       {children}
     </div>
   );
