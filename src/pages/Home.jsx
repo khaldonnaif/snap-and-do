@@ -20,7 +20,7 @@ function Home() {
             <Button
               bgColor="bg-purple-muted"
               bordered={false}
-              className="rounded-3xl"
+              className="rounded-3xl hover:scale-105 transition duration-75"
             >
               + Add New Task
             </Button>
