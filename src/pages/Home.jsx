@@ -16,6 +16,8 @@ function Home() {
       <SidePanel
         isOpen={sidePanelOpen}
         width={sidePanelWidth}
+        bgClass="bg-[#2e2e3b] border-r border-[#424252]"
+        bordered={false}
       >
 
       </SidePanel>
@@ -26,8 +28,8 @@ function Home() {
         <img 
           onClick={() => setSidePanelOpen(!sidePanelOpen)}
           src=
-          {sidePanelOpen ? "/assets/menu/arrows/light-gray-right-arrow-no-tail.svg" : "/assets/menu/arrows/light-gray-left-arrow-no-tail.svg"}
-          className="size-16 absolute left-0 -translate-y-1/2 top-[50vh] cursor-pointer"
+          {sidePanelOpen ? "/assets/menu/arrows/light-gray-left-arrow-no-tail.svg" : "/assets/menu/arrows/light-gray-right-arrow-no-tail.svg"}
+          className="size-12 absolute left-0 -translate-y-1/2 top-[50vh] cursor-pointer"
         />
         <Header bgClass="bg-slate-dark" bordered={false}>
           <h1 className="text-4xl font-bold">

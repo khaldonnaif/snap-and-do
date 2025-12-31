@@ -25,10 +25,10 @@ function SidePanel({
       ${bgClass}
       ${textColor}
       ${bordered ? `${borderThickness} ${borderColor}` : ""}
-      ${className}
       top-0 left-0 bottom-0 fixed
       ${isOpen ? "translate-x-0 pointer-events-auto" : "-translate-x-full pointer-events-none"}
       transition duration-300
+      ${className}
     `}>
     </div>
   );
