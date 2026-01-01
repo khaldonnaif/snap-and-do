@@ -33,7 +33,7 @@ function Card({
   return (
     <div className={`${flex} relative overflow-hidden ${bgColor} w-full m-12 ${maxWidth} ${minHeight} ${borderThickness} ${borderColor} ${borderRadius} p-8 ${classNameCard}`}>
 
-      {/*  */}
+      {/* Background decorations */}
       {orbsDiagonalTRBL && (
         <>
           <div className={`absolute ${orbsDiagonalTRBL.topPosition || "top-0 right-0"} ${orbsDiagonalTRBL.size || "w-64 h-64"} ${orbsDiagonalTRBL.topColor || "bg-white/10"} rounded-full blur-3xl`}></div>
