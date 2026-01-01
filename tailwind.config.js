@@ -14,7 +14,8 @@ export default {
         'purple-muted': '#645FC6',
       },
       fontFamily: {
-        nunito: ["Nunito", "sans-serif"]
+        nunito: ["Nunito", "sans-serif"],
+        atkinson: ["Atkinson Hyperlegible Mono", "sans-serif"]
       }
     },
   },
