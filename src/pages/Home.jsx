@@ -56,6 +56,19 @@ function Home() {
             </div>
           </div>
         </Header>
+        <div className="px-12">
+          <div className="flex gap-6 px-16 pt-12">
+            <div className="flex-1">
+              a
+            </div>
+            <div className="flex-1">
+              b
+            </div>
+            <div className="flex-1">
+              c
+            </div>
+          </div>
+        </div>
       </MainLayout>      
     </div>
   );
