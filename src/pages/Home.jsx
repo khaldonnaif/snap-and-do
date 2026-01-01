@@ -3,11 +3,16 @@ import Header from "../components/layouts/Header.jsx";
 import MainLayout from "../components/layouts/MainLayout.jsx";
 import SidePanel from "../components/layouts/SidePanel.jsx";
 import Button from "../components/common/Button.jsx";
+import Circle from "../components/common/Circle.jsx";
 import { Link } from "react-router-dom";
 
 function Home() {
   const [aboutIsHovered, setAboutIsHovered] = useState(false);
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
+
+  const [todo, setTodo] = useState([]);
+  const [doing, setDoing] = useState([]);
+  const [done, setDone] = useState([]);
 
   const sidePanelWidth = "w-64"
 
