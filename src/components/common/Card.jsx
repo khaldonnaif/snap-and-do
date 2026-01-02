@@ -16,12 +16,15 @@
 function Card({
   children, 
   flex="flex flex-col justify-evenly items-center",
-  maxWidth="max-w-4xl", 
-  minHeight="min-h-[300px]", 
+  minWidth,
+  maxWidth, 
+  minHeight,
+  maxHeight, 
   textColor="text-black", 
   bgColor="bg-white", 
   borderColor="border-black", 
   borderThickness="border-2", 
+  bordered=true,
   borderRadius="rounded-lg",
   orbsDiagonalTRBL,
   orbsDiagonalTLBR,
@@ -31,7 +34,22 @@ function Card({
   }) {
 
   return (
-    <div className={`${flex} relative overflow-hidden ${bgColor} w-full m-12 ${maxWidth} ${minHeight} ${borderThickness} ${borderColor} ${borderRadius} p-8 ${classNameCard}`}>
+    <div className={`
+      ${flex} 
+      relative 
+      overflow-hidden 
+      ${bgColor} 
+      w-full 
+      m-12 
+      ${minWidth || ""}
+      ${maxWidth || ""} 
+      ${minHeight || ""} 
+      ${maxHeight || ""}
+      ${bordered ? `${borderThickness} ${borderColor}` : ""} 
+      ${borderRadius} 
+      p-8 
+      ${classNameCard}
+    `}>
 
       {/* Background decorations */}
       {orbsDiagonalTRBL && (

@@ -4,6 +4,7 @@ import MainLayout from "../components/layouts/MainLayout.jsx";
 import SidePanel from "../components/layouts/SidePanel.jsx";
 import Button from "../components/common/Button.jsx";
 import Circle from "../components/common/Circle.jsx";
+import TaskCard from "../components/custom/TaskCard.jsx";
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -63,10 +64,10 @@ function Home() {
             </div>
           </div>
         </Header>
-        <div className="px-12">
-          <div className="flex gap-6 px-16 pt-12">
-            <div className="flex-1">
-              <div className="heading flex justify-center">
+        <div id="body-container" className="px-12">
+          <div id="column-section" className="flex gap-6 px-16 pt-12">
+            <div className="flex-1 flex flex-col items-center">
+              <div id="column-header-1" className="flex justify-center">
                 <Circle  
                   bgColor="bg-[#33b09b]"
                   size="sm"
@@ -76,9 +77,12 @@ function Home() {
                   TODO ({todo.length})
                 </h3>                
               </div>
+              <TaskCard>
+                test
+              </TaskCard>
             </div>
             <div className="flex-1">
-              <div className="heading flex justify-center">
+              <div id="column-header-2" className="flex justify-center">
                 <Circle  
                   bgColor="bg-[#654c91]"
                   size="sm"
@@ -90,7 +94,7 @@ function Home() {
               </div>
             </div>
             <div className="flex-1">
-              <div className="heading flex justify-center">
+              <div id="column-header-3" className="flex justify-center">
                 <Circle  
                   bgColor="bg-[#5bb377]"
                   size="sm"
