@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import {v4 as uuidv4} from "uuid";
 import Header from "../components/layouts/Header.jsx";
 import MainLayout from "../components/layouts/MainLayout.jsx";
 import SidePanel from "../components/layouts/SidePanel.jsx";
 import Button from "../components/common/Button.jsx";
 import Circle from "../components/common/Circle.jsx";
+import Card from "../components/common/Card.jsx";
 import TaskCard from "../components/custom/TaskCard.jsx";
+import AddTaskModal from "../components/custom/AddTaskModal.jsx";
 import { Link } from "react-router-dom";
 
 function Home() {
   const [aboutIsHovered, setAboutIsHovered] = useState(false);
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
+  const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 
   //Task states
 
@@ -101,6 +104,13 @@ function Home() {
     setDone(prev => prev.filter(task => task.id !== id));
   }
 
+  //Modal function
+  function closeAddTaskModal() {
+    setIsAddTaskModalOpen(false);
+    return;
+  }
+
+  //Return Homepage
   const sidePanelWidth = "w-64"
 
   return (
@@ -134,6 +144,7 @@ function Home() {
               bgColor="bg-purple-muted"
               bordered={false}
               className="rounded-3xl hover:scale-105 transition duration-75"
+              onClick={() => setIsAddTaskModalOpen(true)}
             >
               + Add New Task
             </Button>
@@ -191,7 +202,11 @@ function Home() {
             </div>
           </div>
         </div>
-      </MainLayout>      
+      </MainLayout>
+      <AddTaskModal 
+        isOpen={isAddTaskModalOpen}
+        onClose={() => setIsAddTaskModalOpen(false)}
+      />
     </div>
   );
 }

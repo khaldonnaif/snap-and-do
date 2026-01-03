@@ -9,8 +9,8 @@ function Modal({ isOpen, onClose, children }) {
         onClick={onClose}
       />
       {/* Modal */}
-      <div className="fixed inset z-50 flex justify-center items-center p-4">
-        <div className="w-full max-w-2xl relative">
+      <div className="fixed inset-0 z-50 flex justify-center items-center p-4 pointer-events-none">
+        <div className="w-full max-w-[600px] md:max-w-[700px] lg:max-w-[900px] relative pointer-events-auto">
           {children}
         </div>
       </div>
