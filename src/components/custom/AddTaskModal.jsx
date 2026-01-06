@@ -38,11 +38,12 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
           </div>
           <div className="mb-8">
             <label className="text-sm md:text-md text-[#98a0ab] mb-2">Priority</label>
-            <div className="flex justify-start items-center gap-4">
+            <div className="flex justify-start items-center mt-2 gap-4">
               <Button
                 bgColor="bg-midnight"
                 bordered={false}
                 textColor="text-[#98a0ab]"
+                className="hover:bg-purple-muted hover:scale-105 hover:text-white transition-all duration-150"
               >
                 Low
               </Button>
@@ -50,6 +51,7 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
                 bgColor="bg-midnight"
                 bordered={false}
                 textColor="text-[#98a0ab]"
+                className="hover:bg-purple-muted hover:scale-105 hover:text-white transition-all duration-150"
               >
                 Medium
               </Button>
@@ -57,6 +59,7 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
                 bgColor="bg-midnight"
                 bordered={false}
                 textColor="text-[#98a0ab]"
+                className="hover:bg-purple-muted hover:scale-105 hover:text-white transition-all duration-150"
               >
                 High
               </Button>
@@ -67,6 +70,7 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
               bgColor="bg-midnight"
               bordered={false}
               textColor="text-[#98a0ab]"
+              className="hover:bg-[#c4353f] hover:text-white transition-all duration-150"
             >
               Cancel
             </Button>
@@ -74,6 +78,7 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
               bgColor="bg-purple-muted"
               bordered={false}
               textColor="text-white"
+              className="hover:bg-[#7772db] transition-all duration-150"
             >
               Add Task
             </Button>
