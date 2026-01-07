@@ -25,7 +25,7 @@ function Home() {
 
   function addTask(title, description, priority) {
     //Validate priority
-    const validPriorities = ["low", "medium", "high"];
+    const validPriorities = ["none", "low", "medium", "high"];
 
     if (!validPriorities.includes(priority)) {
       console.error(`Invalid priority: ${priority}. Must be one of the following: ${validPriorities.join(", ")}`);
@@ -174,7 +174,12 @@ function Home() {
                   TODO ({todo.length})
                 </h3>                
               </div>
-              
+              {todo.map(task => (
+                <TaskCard 
+                  task={task}
+                  key={task.id}
+                />
+              ))}
             </div>
             <div className="flex-1">
               <div id="column-header-2" className="flex justify-center">
