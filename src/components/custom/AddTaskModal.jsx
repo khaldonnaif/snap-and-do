@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import Modal from "../common/Modal.jsx";
 import Card from "../common/Card.jsx";
 import Button from "../common/Button.jsx";
@@ -10,6 +10,8 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("none");
+
+  const [titleMissing, setTitleMissing] = useState(false);
 
   return (
     <Modal
@@ -41,7 +43,10 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
               placeholder="Enter task title..."
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-            ></input>       
+            ></input>
+            <span className={`text-red-500 ${titleMissing ? "" : "hidden"} text-sm mt-2`}>
+              (Please enter a title)
+            </span>  
           </div>
           <div id="description-section" className="flex flex-col my-8">
             <label htmlFor="description-input" className="text-sm md:text-md text-[#98a0ab] mb-2">Task Description (optional)</label> 
@@ -143,10 +148,14 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
               textColor="text-white"
               className="hover:bg-[#7772db] transition-all duration-150"
               onClick={() => {
-                AddTaskFunction(title, description, priority);
-                onClose();
-              }}
-            >
+                if (title.trim()){
+                  setTitleMissing(false);
+                  AddTaskFunction(title, description, priority);
+                  onClose();
+                } else {
+                  setTitleMissing(true);
+                }
+              }}>
               Add Task
             </Button>
           </div>
