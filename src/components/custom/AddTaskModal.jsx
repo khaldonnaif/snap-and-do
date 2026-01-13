@@ -61,7 +61,8 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
               placeholder="Enter task descripiton..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-            ></textarea>       
+            ></textarea>     
+            <span className={"text-[#98a0ab] text-xs mt-2 ml-auto"}>{300-description.length}/300</span>  
           </div>
           <div className="mb-8">
             <label className="text-sm md:text-md text-[#98a0ab] mb-2">Priority</label>
