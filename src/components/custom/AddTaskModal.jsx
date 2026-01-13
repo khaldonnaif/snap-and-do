@@ -39,14 +39,18 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
             <label htmlFor="title-input" className="text-sm md:text-md text-[#98a0ab] mb-2">Task Title *</label> 
             <input 
               id="title-input" 
+              maxLength={30}
               className="bg-midnight text-white border-none rounded-lg outline-none py-2 px-4  placeholder:text-[#98a0ab]" 
               placeholder="Enter task title..."
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             ></input>
-            <span className={`text-red-500 ${titleMissing ? "" : "hidden"} text-sm mt-2`}>
-              (Please enter a title)
-            </span>  
+            <div className="flex justify-between">
+              <span className={`text-red-500 ${titleMissing ? "" : "invisible"} text-sm mt-2`}>
+                {titleMissing ? "(Please enter a title)" : ""}
+              </span>
+              <span className={"text-[#98a0ab] text-xs mt-2"}>{30-title.length}/30</span>
+            </div>
           </div>
           <div id="description-section" className="flex flex-col my-8">
             <label htmlFor="description-input" className="text-sm md:text-md text-[#98a0ab] mb-2">Task Description (optional)</label> 

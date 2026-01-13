@@ -20,7 +20,7 @@ function TaskCard({ task }) {
       textColor="text-[#e3e3e3]"
       flex="flex flex-col justify-center items-start"
       bordered={false}
-      classNameCard="!p-4 !pl-6 m-2"
+      classNameCard="!p-4 !py-2 !pl-6 m-2"
       classNameChildren="h-[60px] !m-2"
     >
       <div className={`absolute left-4 h-[80%] top-1/2 -translate-y-1/2 w-2 rounded-2xl ${priorityBgColors[task.priority]}`}></div>
