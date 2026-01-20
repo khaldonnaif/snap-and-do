@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
  * A button component with predefined size options from sm to 2xl
  * 
  * @param {string} className - Custom styling that isn't accounted for (e.g, animations)
- * @param {"sm" | "md" | "lg" | "xl" | "2xl"} size - Sets static size
  * @param {string} bgColor - Choose a valid tailwind background color class (e.g., bg-black)
  * @param {string} textColor - Choose a valid tailwind text color class (e.g., text-white) 
  * @param {string} borderColor - Choose a valid tailwind border color class (e.g., border-black)
@@ -14,6 +13,7 @@ import { Link } from "react-router-dom";
 function Button ({
   children, 
   size="md", 
+  padding="px-2 py-1",
   bgColor="bg-white", 
   textColor="text-white", 
   borderColor="border-black", 
@@ -23,21 +23,14 @@ function Button ({
   onClick, // forwarded click handler
   type = "button",
 }) {
-  const sizeClasses = {
-    sm: "px-4 py-1 rounded-sm",
-    md: "px-6 py-2 rounded-md",
-    lg: "px-8 py-3 rounded-md",
-    xl: "px-12 py-4 rounded-md",
-    "2xl": "px-16 py-5 rounded-lg" 
-  }
 
   return (
     <button
       type={type}
       onClick={onClick}
       className={`
+        ${padding}
         ${bgColor} 
-        ${sizeClasses[size]} 
         ${textColor} 
         ${bordered ? `${borderColor} ${borderThickness}` : ""} 
         ${className}

@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-primary: #645FC6;
+  --color-secondary: #2C2C38;
+  --color-text: #e3e3e3;
+  --color-border: #606266;
+  --color-bg: #21212D;
+  --color-hover: #1e1e26;
+}
+
 @layer base{
   textarea {
     resize: none;
@@ -12,6 +21,71 @@
   textarea::-webkit-scrollbar-track{
     background: transparent
   }
+}
+
+@layer components {
+  /* Button Variants */
+  .btn-primary {
+    @apply px-4 py-2 rounded-lg transition-opacity hover:opacity-90 cursor-pointer;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    border: none;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 rounded-lg border transition-colors cursor-pointer;
+    background-color: transparent;
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-hover);
+  }
+
+  .btn-ghost {
+    @apply px-2 py-1 rounded-lg transition-colors cursor-pointer;
+    background-color: transparent;
+    color: var(--color-text);
+    border: none;
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--color-hover);
+  }
+
+  /* Card Variants */
+  .card-dark {
+    @apply p-6 rounded-lg relative overflow-hidden;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+  }
+
+  /* Header/Footer */
+  .header-dark {
+    @apply w-full h-20 px-12 flex items-center justify-between;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .footer-dark {
+    @apply w-full h-20 flex items-center;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  /* Circular Button Sizes */
+  .circ-btn-sm { @apply h-8 w-8 rounded-full cursor-pointer border-none transition-all; }
+  .circ-btn-md { @apply h-10 w-10 rounded-full cursor-pointer border-none transition-all; }
+  .circ-btn-lg { @apply h-12 w-12 rounded-full cursor-pointer border-none transition-all; }
+  .circ-btn-xl { @apply h-16 w-16 rounded-full cursor-pointer border-none transition-all; }
+
+  /* Circle Sizes */
+  .circle-sm { @apply w-4 h-4 rounded-full; }
+  .circle-md { @apply w-8 h-8 rounded-full; }
+  .circle-lg { @apply w-12 h-12 rounded-full; }
+  .circle-xl { @apply w-16 h-16 rounded-full; }
+  .circle-2xl { @apply w-32 h-32 rounded-full; }
 }
 
 @layer utilities {

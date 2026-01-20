@@ -143,7 +143,7 @@ function Home() {
             <Button
               bgColor="bg-purple-muted"
               bordered={false}
-              className="rounded-3xl hover:scale-105 transition duration-75"
+              className="rounded-3xl hover:scale-105 transition duration-75 py-2 px-4 font-bold"
               onClick={() => setIsAddTaskModalOpen(true)}
             >
               + Add New Task
