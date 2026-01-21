@@ -1,57 +1,35 @@
 /**
- * @param {string} classNameCard - Custom styling of the card that isn't accounted for (e.g, animations)
- * @param {string} classNameChildren - Custom styling of the card that isn't accounted for (e.g, custom backgrounds)
- * @param {string} flex - Full flex build (e.g., flex flex-col justify-evenly items-center)
- * @param {string} bgColor - Choose a valid tailwind background color class (e.g., bg-black)
- * @param {string} textColor - Choose a valid tailwind text color class (e.g., text-white) 
- * @param {string} borderColor - Choose a valid tailwind border color class (e.g., border-black)
- * @param {string} borderThickness - Choose a valid tailwind border-size class (e.g., border-2)
- * @param {string} maxWidth - Choose a valid tailwind max-width class (e.g., max-w-4xl)
- * @param {string} minHeight - Choose a valid tailwind min-height class (e.g., min-h-[300px])
- * @param {string} borderRadius - Choose a valid tailwind border-radius class (e.g., rounded-lg)
- * @param {Object} orbsDiagonalTRBL - Optional configuration for decorative background orbs (top right, bottom left). Pass an object with topColor, bottomColor, topPosition, bottomPosition, and size properties.
- * @param {Object} orbsDiagonalTLBR - Optional configuration for decorative background orbs (top left, bottom right). Pass an object with topColor, bottomColor, topPosition, bottomPosition, and size properties.
- * @param {Object} orbsCenter - Optional configuration for decorative background orbs (center). Pass an object with color, position, and size properties.
+ * A flexible card component that accepts CSS classes for styling
+ * 
+ * @param {string} className - CSS classes for outer container (e.g., "card-dark")
+ * @param {string} classNameChildren - CSS classes for children container (e.g., "p-4 flex flex-col")
+ * @param {Object} orbsDiagonalTRBL - Optional config for decorative orbs (top right, bottom left)
+ *   @property {string} topColor - Tailwind color class for top orb (e.g., "bg-purple-500/20")
+ *   @property {string} bottomColor - Tailwind color class for bottom orb (e.g., "bg-blue-500/20")
+ *   @property {string} topPosition - Tailwind position classes (e.g., "top-0 right-0")
+ *   @property {string} bottomPosition - Tailwind position classes (e.g., "bottom-0 left-0")
+ *   @property {string} size - Tailwind size classes (e.g., "w-64 h-64")
+ * @param {Object} orbsDiagonalTLBR - Optional config for decorative orbs (top left, bottom right)
+ *   @property {string} topColor - Tailwind color class for top orb
+ *   @property {string} bottomColor - Tailwind color class for bottom orb
+ *   @property {string} topPosition - Tailwind position classes (e.g., "top-0 left-0")
+ *   @property {string} bottomPosition - Tailwind position classes (e.g., "bottom-0 right-0")
+ *   @property {string} size - Tailwind size classes
+ * @param {Object} orbsCenter - Optional config for decorative orbs (center)
+ *   @property {string} topColor - Tailwind color class for orb
+ *   @property {string} position - Tailwind position classes (e.g., "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2")
+ *   @property {string} size - Tailwind size classes
  */
 function Card({
   children, 
-  flex="flex flex-col justify-evenly items-center",
-  minWidth,
-  maxWidth, 
-  minHeight,
-  maxHeight, 
-  textColor="text-black", 
-  bgColor="bg-white", 
-  borderColor="border-black", 
-  borderThickness="border-2", 
-  bordered=true,
-  borderRadius="rounded-lg",
+  className="",
+  classNameChildren="",
   orbsDiagonalTRBL,
   orbsDiagonalTLBR,
   orbsCenter,
-  classNameCard="",
-  classNameChildren=""
-  }) {
-
+}) {
   return (
-    <div className={`
-      ${flex} 
-      relative 
-      overflow-hidden 
-      ${bgColor} 
-      w-full 
-      m-12 
-      ${minWidth || ""}
-      ${maxWidth || ""} 
-      ${minHeight || ""} 
-      ${maxHeight || ""}
-      ${bordered ? `${borderThickness} ${borderColor}` : ""} 
-      ${borderRadius} 
-      p-8 
-      ${classNameCard}
-    `}>
-
-      {/* Background decorations */}
+    <div className={`relative overflow-hidden ${className}`}>
       {orbsDiagonalTRBL && (
         <>
           <div className={`absolute ${orbsDiagonalTRBL.topPosition || "top-0 right-0"} ${orbsDiagonalTRBL.size || "w-64 h-64"} ${orbsDiagonalTRBL.topColor || "bg-white/10"} rounded-full blur-3xl`}></div>
@@ -69,7 +47,8 @@ function Card({
           <div className={`absolute ${orbsCenter.position || "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"} ${orbsCenter.size || "w-64 h-64"} ${orbsCenter.topColor || "bg-white/10"} rounded-full blur-3xl`}></div>
         </>
       )}
-      <div className={`${textColor} z-10 w-full flex-1 ${classNameChildren}`}>
+      
+      <div className={`relative z-10 w-full ${classNameChildren}`}>
         {children}
       </div>
     </div>
