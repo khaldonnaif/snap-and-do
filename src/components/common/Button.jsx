@@ -1,44 +1,25 @@
-import { Link } from "react-router-dom";
-
 /**
- * A button component with predefined size options from sm to 2xl
+ * A simple button component that accepts CSS classes for styling
  * 
- * @param {string} className - Custom styling that isn't accounted for (e.g, animations)
- * @param {string} bgColor - Choose a valid tailwind background color class (e.g., bg-black)
- * @param {string} textColor - Choose a valid tailwind text color class (e.g., text-white) 
- * @param {string} borderColor - Choose a valid tailwind border color class (e.g., border-black)
- * @param {string} borderThickness - Choose a valid tailwind border-size class (e.g., border-2)
- * @param {boolean} bordered - Decides whether or not to show the borders at all (e.g., true)
+ * @param {string} className - CSS classes (e.g., "btn-primary", "btn-secondary")
+ * @param {function} onClick - Click handler
+ * @param {string} type - Button type (e.g., "button", "submit")
  */
 function Button ({
   children, 
-  size="md", 
-  padding="px-2 py-1",
-  bgColor="bg-white", 
-  textColor="text-white", 
-  borderColor="border-black", 
-  borderThickness="border-2",
-  bordered=true,
   className="",
-  onClick, // forwarded click handler
+  onClick, 
   type = "button",
 }) {
-
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`
-        ${padding}
-        ${bgColor} 
-        ${textColor} 
-        ${bordered ? `${borderColor} ${borderThickness}` : ""} 
-        ${className}
-      `}
+      className={className}
     >
       {children}
     </button>
   );
-};
+}
 
 export default Button;
