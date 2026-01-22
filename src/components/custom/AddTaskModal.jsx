@@ -19,17 +19,13 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
       onClose={onClose}
     >
       <Card
-        bgColor="bg-slate-dark"
-        bordered={false}
-        flex="flex flex-col items-start"
-        classNameCard="w-[300px] h-[300px] sm:w-[490px] sm:h-[350px] md:w-[700px] md:h-[400px] lg:w-[900px] lg:h-[450px] !overflow-y-auto !p-0"
+        className="card-dark flex flex-col items-start w-[300px] h-[300px] sm:w-[490px] sm:h-[350px] md:w-[700px] md:h-[400px] lg:w-[900px] lg:h-[450px] !overflow-y-auto !p-0"
         classNameChildren="h-full overflow-y-auto min-h-0 scrollbar-dark"
       >
         <div className="w-full flex flex-col p-8">
           <CircularButton
-            bgClass="bg-[#3a3a4a]"
-            textColor="text-white"
-            className="font-bold absolute top-3 right-3 hover:bg-[#484859] transition-all duration-150"
+            size="circ-md"
+            className="bg-[#3a3a4a] text-white font-bold absolute top-3 right-3 hover:bg-[#484859] transition-all duration-150"
             onClick={onClose}
           >
             X
@@ -68,69 +64,41 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
             <label className="text-sm md:text-md text-[#98a0ab] mb-2">Priority</label>
             <div className="flex justify-start items-center mt-2 gap-4">
               <Button
-                bgColor={`${
+                className={`px-4 py-2 rounded-lg transition-all duration-150 hover:scale-105 ${
                   priority === "none"
-                  ? "bg-purple-muted"
-                  : "bg-midnight"
+                  ? "bg-purple-muted text-white hover:bg-[#7772db]"
+                  : "bg-midnight text-[#98a0ab] hover:bg-[#7772db] hover:text-white"
                 }`}
-                bordered={false}
-                textColor={`${ 
-                  priority === "none"
-                  ? "text-white"
-                  : "text-[#98a0ab]"
-                }`}
-                className="hover:bg-[#7772db] hover:scale-105 hover:text-white transition-all duration-150"
                 onClick={() => setPriority("none")}
               >
                 None
               </Button>
               <Button
-                bgColor={`${
+                className={`px-4 py-2 rounded-lg transition-all duration-150 hover:scale-105 ${
                   priority === "low"
-                  ? "bg-purple-muted"
-                  : "bg-midnight"
+                  ? "bg-purple-muted text-white hover:bg-[#7772db]"
+                  : "bg-midnight text-[#98a0ab] hover:bg-[#7772db] hover:text-white"
                 }`}
-                bordered={false}
-                textColor={`${ 
-                  priority === "low"
-                  ? "text-white"
-                  : "text-[#98a0ab]"
-                }`}
-                className="hover:bg-[#7772db] hover:scale-105 hover:text-white transition-all duration-150"
                 onClick={() => setPriority("low")}
               >
                 Low
               </Button>
               <Button
-                bgColor={`${
+                className={`px-4 py-2 rounded-lg transition-all duration-150 hover:scale-105 ${
                   priority === "medium"
-                  ? "bg-purple-muted"
-                  : "bg-midnight"
+                  ? "bg-purple-muted text-white hover:bg-[#7772db]"
+                  : "bg-midnight text-[#98a0ab] hover:bg-[#7772db] hover:text-white"
                 }`}
-                bordered={false}
-                textColor={`${ 
-                  priority === "medium"
-                  ? "text-white"
-                  : "text-[#98a0ab]"
-                }`}
-                className="hover:bg-[#7772db] hover:scale-105 hover:text-white transition-all duration-150"
                 onClick={() => setPriority("medium")}
               >
                 Medium
               </Button>
               <Button
-                bgColor={`${
+                className={`px-4 py-2 rounded-lg transition-all duration-150 hover:scale-105 ${
                   priority === "high"
-                  ? "bg-purple-muted"
-                  : "bg-midnight"
+                  ? "bg-purple-muted text-white hover:bg-[#7772db]"
+                  : "bg-midnight text-[#98a0ab] hover:bg-[#7772db] hover:text-white"
                 }`}
-                bordered={false}
-                textColor={`${ 
-                  priority === "high"
-                  ? "text-white"
-                  : "text-[#98a0ab]"
-                }`}
-                className="hover:bg-[#7772db] hover:scale-105 hover:text-white transition-all duration-150"
                 onClick={() => setPriority("high")}
               >
                 High
@@ -139,19 +107,13 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
           </div>
           <div className="flex justify-end items-center gap-4 mt-auto">
             <Button
-              bgColor="bg-midnight"
-              bordered={false}
-              textColor="text-[#98a0ab]"
-              className="hover:bg-[#c4353f] hover:text-white transition-all duration-150"
+              className="px-4 py-2 rounded-lg bg-midnight text-[#98a0ab] hover:bg-[#c4353f] hover:text-white transition-all duration-150"
               onClick={onClose}
             >
               Cancel
             </Button>
             <Button
-              bgColor="bg-purple-muted"
-              bordered={false}
-              textColor="text-white"
-              className="hover:bg-[#7772db] transition-all duration-150"
+              className="px-4 py-2 rounded-lg bg-purple-muted text-white hover:bg-[#7772db] transition-all duration-150"
               onClick={() => {
                 if (title.trim()){
                   setTitleMissing(false);
@@ -160,7 +122,8 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
                 } else {
                   setTitleMissing(true);
                 }
-              }}>
+              }}
+            >
               Add Task
             </Button>
           </div>
