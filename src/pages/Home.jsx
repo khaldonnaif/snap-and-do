@@ -1,11 +1,10 @@
-import { use, useState } from "react";
+import {useState } from "react";
 import {v4 as uuidv4} from "uuid";
 import Header from "../components/layouts/Header.jsx";
 import MainLayout from "../components/layouts/MainLayout.jsx";
 import SidePanel from "../components/layouts/SidePanel.jsx";
 import Button from "../components/common/Button.jsx";
 import Circle from "../components/common/Circle.jsx";
-import Card from "../components/common/Card.jsx";
 import TaskCard from "../components/custom/TaskCard.jsx";
 import AddTaskModal from "../components/custom/AddTaskModal.jsx";
 import { Link } from "react-router-dom";
@@ -118,8 +117,7 @@ function Home() {
       <SidePanel
         isOpen={sidePanelOpen}
         width={sidePanelWidth}
-        bgClass="bg-[#2e2e3b] border-r border-[#424252]"
-        bordered={false}
+        className="bg-[#2e2e3b] border-r border-[#424252]"
       >
 
       </SidePanel>
@@ -129,11 +127,10 @@ function Home() {
       >
         <img 
           onClick={() => setSidePanelOpen(!sidePanelOpen)}
-          src=
-          {sidePanelOpen ? "/assets/menu/arrows/light-gray-left-arrow-no-tail.svg" : "/assets/menu/arrows/light-gray-right-arrow-no-tail.svg"}
+          src={sidePanelOpen ? "/assets/menu/arrows/light-gray-left-arrow-no-tail.svg" : "/assets/menu/arrows/light-gray-right-arrow-no-tail.svg"}
           className="size-12 absolute left-0 -translate-y-1/2 top-[50vh] cursor-pointer"
         />
-        <Header bgClass="bg-slate-dark" bordered={false}>
+        <Header className="bg-slate-dark">
           <Link to={"/"}>
             <h1 className="text-4xl font-bold">
               SnapAndDo
@@ -141,9 +138,7 @@ function Home() {
           </Link>
           <div className="flex justify-center items-center gap-12">
             <Button
-              bgColor="bg-purple-muted"
-              bordered={false}
-              className="rounded-3xl hover:scale-105 transition duration-75 py-2 px-4 font-bold"
+              className="bg-purple-muted text-white rounded-3xl hover:scale-105 transition duration-75 py-2 px-4 font-bold"
               onClick={() => setIsAddTaskModalOpen(true)}
             >
               + Add New Task
@@ -166,9 +161,8 @@ function Home() {
             <div className="flex-1 flex flex-col items-center">
               <div id="column-header-1" className="flex justify-center">
                 <Circle  
-                  bgColor="bg-[#33b09b]"
                   size="sm"
-                  bordered={false}
+                  className="bg-[#33b09b]"
                 />
                 <h3 className="text-[#606266] font-atkinson -mt-[2px] ml-6">
                   TODO ({todo.length})
@@ -184,9 +178,8 @@ function Home() {
             <div className="flex-1">
               <div id="column-header-2" className="flex justify-center">
                 <Circle  
-                  bgColor="bg-[#654c91]"
                   size="sm"
-                  bordered={false}
+                  className="bg-[#654c91]"
                 />
                 <h3 className="text-[#606266] font-atkinson -mt-[2px] ml-6">
                   DOING ({doing.length})
@@ -196,9 +189,8 @@ function Home() {
             <div className="flex-1">
               <div id="column-header-3" className="flex justify-center">
                 <Circle  
-                  bgColor="bg-[#5bb377]"
                   size="sm"
-                  bordered={false}
+                  className="bg-[#5bb377]"
                 />
                 <h3 className="text-[#606266] font-atkinson -mt-[2px] ml-6">
                   DONE ({done.length})
