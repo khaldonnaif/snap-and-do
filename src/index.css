@@ -62,13 +62,13 @@
   }
 
   /* Header/Footer */
-  .header-dark {
+  .header {
     @apply w-full h-20 px-12 flex items-center justify-between;
     background-color: var(--color-bg);
     color: var(--color-text);
   }
 
-  .footer-dark {
+  .footer {
     @apply w-full h-20 flex items-center;
     background-color: var(--color-bg);
     color: var(--color-text);
