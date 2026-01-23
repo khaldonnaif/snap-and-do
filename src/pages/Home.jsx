@@ -172,6 +172,8 @@ function Home() {
                 <TaskCard 
                   task={task}
                   key={task.id}
+                  onMoveTask={moveTask}
+                  onDeleteTask={deleteTask}
                 />
               ))}
             </div>
@@ -185,6 +187,14 @@ function Home() {
                   DOING ({doing.length})
                 </h3>                
               </div>
+              {doing.map(task => (
+                <TaskCard 
+                  task={task}
+                  key={task.id}
+                  onMoveTask={moveTask}
+                  onDeleteTask={deleteTask}
+                />
+              ))}
             </div>
             <div className="flex-1">
               <div id="column-header-3" className="flex justify-center">
@@ -196,6 +206,14 @@ function Home() {
                   DONE ({done.length})
                 </h3>                
               </div>
+              {done.map(task => (
+                <TaskCard 
+                  task={task}
+                  key={task.id}
+                  onMoveTask={moveTask}
+                  onDeleteTask={deleteTask}
+                />
+              ))}
             </div>
           </div>
         </div>
