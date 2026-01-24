@@ -27,9 +27,10 @@ function Card({
   orbsDiagonalTRBL,
   orbsDiagonalTLBR,
   orbsCenter,
+  onClick
 }) {
   return (
-    <div className={`relative overflow-hidden ${className}`}>
+    <div className={`relative overflow-hidden ${className}`} onClick={onclick}>
       {orbsDiagonalTRBL && (
         <>
           <div className={`absolute ${orbsDiagonalTRBL.topPosition || "top-0 right-0"} ${orbsDiagonalTRBL.size || "w-64 h-64"} ${orbsDiagonalTRBL.topColor || "bg-white/10"} rounded-full blur-3xl`}></div>

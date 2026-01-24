@@ -2,7 +2,7 @@ import { useState } from "react";
 import Card from "../common/Card.jsx";
 import Button from "../common/Button.jsx";
 
-function TaskCard({ task, onMoveTask, onDeleteTask }) {
+function TaskCard({ task, onMoveTask, onDeleteTask, onExpand }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const priorityBgColors = {
@@ -27,18 +27,21 @@ function TaskCard({ task, onMoveTask, onDeleteTask }) {
         classNameChildren="flex flex-col"
       >
         <div className={`absolute left-0 h-[100%] top-0 w-2 rounded-2xl ${priorityBgColors[task.priority]}`}></div>
-        <div className="flex justify-between items-center px-4 py-2 bg-[#2a2a35]">
+        <div 
+          className="flex justify-between items-center px-4 py-2 bg-[#2a2a35] cursor-pointer"
+          onClick={onExpand}  
+        >
           <p className="text-[#e3e3e3] text-sm font-medium">{task.title}</p>
           <div className="flex gap-2 items-center">
             <Button 
               className="bg-[#333340] hover:bg-[#3a3a42] rounded px-2 py-1 text-xs text-white transition-colors"
-              onClick={() => setDropdownOpen(!dropdownOpen)}
+              onClick={(e) => {e.stopPropagation(); setDropdownOpen(!dropdownOpen)}}
             >
               Move
             </Button>
             <Button 
               className="bg-transparent rounded-full w-5 h-5 p-0 hover:bg-[#ee5858]/30 flex-shrink-0 transition-colors flex items-center justify-center"
-              onClick={() => onDeleteTask(task.id)}
+              onClick={(e) => {e.stopPropagation(); onDeleteTask(task.id)}}
             >
               <img src="/assets/pale-red-trash.svg" className="w-3 h-3" alt="delete" />
             </Button>

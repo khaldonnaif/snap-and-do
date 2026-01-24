@@ -7,12 +7,14 @@ import Button from "../components/common/Button.jsx";
 import Circle from "../components/common/Circle.jsx";
 import TaskCard from "../components/custom/TaskCard.jsx";
 import AddTaskModal from "../components/custom/AddTaskModal.jsx";
+import ExpandedTaskModal from "../components/custom/ExpandedTaskModal.jsx";
 import { Link } from "react-router-dom";
 
 function Home() {
   const [aboutIsHovered, setAboutIsHovered] = useState(false);
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
+  const [selectedTask, setSelectedTask] = useState();
 
   //Task states
 
@@ -103,10 +105,10 @@ function Home() {
     setDone(prev => prev.filter(task => task.id !== id));
   }
 
-  //Modal function
-  function closeAddTaskModal() {
-    setIsAddTaskModalOpen(false);
-    return;
+  function expandTask(id) {
+    const allTasks = [...todo, ...doing, ...done];
+    const targetTask = allTasks.find(task => task.id === id);
+    if (targetTask) setSelectedTask(targetTask);
   }
 
   //Return Homepage
@@ -174,6 +176,7 @@ function Home() {
                   key={task.id}
                   onMoveTask={moveTask}
                   onDeleteTask={deleteTask}
+                  onExpand={() => setSelectedTask(task)}
                 />
               ))}
             </div>
@@ -193,6 +196,7 @@ function Home() {
                   key={task.id}
                   onMoveTask={moveTask}
                   onDeleteTask={deleteTask}
+                  onExpand={() => setSelectedTask(task)}
                 />
               ))}
             </div>
@@ -212,6 +216,7 @@ function Home() {
                   key={task.id}
                   onMoveTask={moveTask}
                   onDeleteTask={deleteTask}
+                  onExpand={() => setSelectedTask(task)}
                 />
               ))}
             </div>
@@ -222,6 +227,12 @@ function Home() {
         isOpen={isAddTaskModalOpen}
         onClose={() => setIsAddTaskModalOpen(false)}
         AddTaskFunction={addTask}
+      />
+      <ExpandedTaskModal 
+        isOpen={selectedTask}
+        onClose={() => setSelectedTask()}
+        task={selectedTask}
+        onEdit={""}
       />
     </div>
   );
