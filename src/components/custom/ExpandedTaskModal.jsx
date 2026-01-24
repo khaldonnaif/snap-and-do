@@ -1,10 +1,15 @@
+import { use, useState } from "react";
 import Modal from "../common/Modal.jsx";
 import Card from "../common/Card.jsx";
 import Button from "../common/Button.jsx";
 import CircularButton from "../common/CircularButton.jsx";
 
-function ExpandedTaskModal({ isOpen, onClose, task, onEdit }) {
+function ExpandedTaskModal({ isOpen, onClose, task, onEditSubmit }) {
   if (!isOpen || !task) return null;
+
+  const [editMode, setEditMode] = useState(false);
+  const [editTitle, setEditTitle] = useState(task.title);
+  const [editDescription, setEditDescription] = useState(task.description || "");
 
   const priorityColors = {
     none: "text-gray-600",
@@ -31,13 +36,32 @@ function ExpandedTaskModal({ isOpen, onClose, task, onEdit }) {
             X
           </CircularButton>
           
-          <h2 className="text-2xl md:text-3xl text-[#d1d5db] font-bold mb-6">{task.title}</h2>
+          {editMode ? (
+            <div className="flex flex-col">
+              <label className="text-sm md:text-md text-[#98a0ab] mb-3 font-semibold">Title</label>
+              <input 
+                className="text-[#e3e3e3] text-sm md:text-base leading-relaxed bg-midnight rounded-lg p-4" 
+                value={editTitle}
+                onChange={(e) => setEditTitle(e.target.value)}
+              />
+            </div>
+          ) : (
+            <h2 className="text-2xl md:text-3xl text-[#d1d5db] font-bold mb-6">{task.title}</h2>            
+          )}
           
           <div id="description-section" className="flex flex-col my-6">
             <label className="text-sm md:text-md text-[#98a0ab] mb-3 font-semibold">Description</label>
-            <p className="text-[#e3e3e3] text-sm md:text-base leading-relaxed bg-midnight rounded-lg p-4">
-              {task.description || "(No description provided)"}
-            </p>
+            {editMode ? (
+              <input 
+                className="text-[#e3e3e3] text-sm md:text-base leading-relaxed bg-midnight rounded-lg p-4" 
+                value={editDescription}
+                onChange={(e) => setEditDescription(e.target.value)}
+              />
+            ) : (
+              <p className="text-[#e3e3e3] text-sm md:text-base leading-relaxed bg-midnight rounded-lg p-4">
+                {task.description || "(No description provided)"}
+              </p>              
+            )}
           </div>
 
           <div id="metadata-section" className="flex flex-col my-6">
@@ -65,12 +89,21 @@ function ExpandedTaskModal({ isOpen, onClose, task, onEdit }) {
             >
               Close
             </Button>
-            {/*<Button
-              className="px-4 py-2 rounded-lg bg-purple-muted text-white hover:bg-[#7772db] transition-all duration-150"
-              onClick={() => onEdit(task)}
-            >
-              Edit
-            </Button>*/}
+            {editMode ? (
+              <Button
+                className="px-4 py-2 rounded-lg bg-purple-muted text-white hover:bg-[#7772db] transition-all duration-150"
+                onClick={() => {onEditSubmit(task.id, editTitle, editDescription); onClose()}}
+              >
+                Submit
+              </Button>    
+            ) : (
+              <Button
+                className="px-4 py-2 rounded-lg bg-purple-muted text-white hover:bg-[#7772db] transition-all duration-150"
+                onClick={() => setEditMode(true)}
+              >
+                Edit
+              </Button>              
+            )}
           </div>
         </div>
       </Card>        

@@ -14,7 +14,7 @@ function Home() {
   const [aboutIsHovered, setAboutIsHovered] = useState(false);
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
-  const [selectedTask, setSelectedTask] = useState();
+  const [selectedTask, setSelectedTask] = useState(null);
 
   //Task states
 
@@ -103,6 +103,39 @@ function Home() {
     setTodo(prev => prev.filter(task => task.id !== id));
     setDoing(prev => prev.filter(task => task.id !== id));
     setDone(prev => prev.filter(task => task.id !== id));
+  }
+
+  function editTask(id, newTitle, newDesc) {
+    const allTasks = [...todo, ...doing, ...done];
+    const targetTask = allTasks.find(task => task.id === id);
+
+    if (!targetTask) {
+      console.error(`Cannot find task with the following id: ${id}`);
+      return;
+    }
+
+    const updatedTask = {
+      ...targetTask,
+      title: newTitle,
+      description: newDesc
+    };
+
+    if (targetTask.status === "todo") {
+      setTodo(prev => [
+        updatedTask,
+        ...prev.filter(task => task.id !== id),
+      ])
+    } else if (targetTask.status === "doing") {
+      setDoing(prev => [
+        updatedTask,
+        ...prev.filter(task => task.id !== id),
+      ])
+    } else if (targetTask.status === "done") {
+      setDone(prev => [
+        updatedTask,
+        ...prev.filter(task => task.id !== id),
+      ])
+    }
   }
 
   function expandTask(id) {
@@ -230,9 +263,9 @@ function Home() {
       />
       <ExpandedTaskModal 
         isOpen={selectedTask}
-        onClose={() => setSelectedTask()}
+        onClose={() => setSelectedTask(null)}
         task={selectedTask}
-        onEdit={""}
+        onEditSubmit={editTask}
       />
     </div>
   );
