@@ -63,13 +63,13 @@
 
   /* Header/Footer */
   .header {
-    @apply w-full h-20 px-12 flex items-center justify-between;
+    @apply w-full h-32 sm:h-20 px-4 sm:px-8 lg:px-12 flex items-center justify-between;
     background-color: var(--color-bg);
     color: var(--color-text);
   }
 
   .footer {
-    @apply w-full h-20 flex items-center;
+    @apply w-full h-16 sm:h-20 flex items-center px-4 sm:px-8 lg:px-12;
     background-color: var(--color-bg);
     color: var(--color-text);
   }

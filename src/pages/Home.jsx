@@ -152,6 +152,7 @@ function Home() {
       <SidePanel
         isOpen={sidePanelOpen}
         width={sidePanelWidth}
+        onClose={() => setSidePanelOpen(false)}
         className="bg-[#2e2e3b] border-r border-[#424252]"
       >
 
@@ -163,17 +164,17 @@ function Home() {
         <img 
           onClick={() => setSidePanelOpen(!sidePanelOpen)}
           src={sidePanelOpen ? "/assets/menu/arrows/light-gray-left-arrow-no-tail.svg" : "/assets/menu/arrows/light-gray-right-arrow-no-tail.svg"}
-          className="size-12 absolute left-0 -translate-y-1/2 top-[50vh] cursor-pointer"
+          className="size-8 sm:size-12 absolute left-2 sm:left-0 -translate-y-1/2 top-[50vh] cursor-pointer z-30 md:z-auto"
         />
         <Header className="bg-slate-dark">
           <Link to={"/"}>
-            <h1 className="text-4xl font-bold">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
               SnapAndDo
             </h1>          
           </Link>
-          <div className="flex justify-center items-center gap-12">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-12 w-full sm:w-auto">
             <Button
-              className="bg-purple-muted text-white rounded-3xl hover:scale-105 transition duration-75 py-2 px-4 font-bold"
+              className="bg-purple-muted text-white rounded-3xl hover:scale-105 transition duration-75 py-2 px-3 sm:px-4 font-bold text-sm sm:text-base w-full sm:w-auto"
               onClick={() => setIsAddTaskModalOpen(true)}
             >
               + Add New Task
@@ -185,21 +186,21 @@ function Home() {
               <Link to="/About">
                 <img 
                   src={aboutIsHovered ? "/assets/about/exclamation-point/light-gray-exclamation-point.svg" : "/assets/about/exclamation-point/gray-exclamation-point.svg"} 
-                  className="size-8"
+                  className="size-6 sm:size-8"
                 />
               </Link>
             </div>
           </div>
         </Header>
-        <div id="body-container" className="px-12">
-          <div id="column-section" className="flex gap-6 px-16 pt-12">
+        <div id="body-container" className="px-4 sm:px-8 lg:px-12">
+          <div id="column-section" className="flex flex-col md:flex-row gap-4 md:gap-6 px-0 md:px-16 pt-8 md:pt-12">
             <div className="flex-1 flex flex-col items-center">
               <div id="column-header-1" className="flex justify-center">
                 <Circle  
                   size="sm"
                   className="bg-[#33b09b]"
                 />
-                <h3 className="text-[#606266] font-atkinson -mt-[2px] ml-6">
+                <h3 className="text-[#606266] font-atkinson -mt-[2px] ml-6 text-sm sm:text-base">
                   TODO ({todo.length})
                 </h3>                
               </div>
@@ -213,13 +214,13 @@ function Home() {
                 />
               ))}
             </div>
-            <div className="flex-1">
+            <div className="flex-1 flex flex-col items-center">
               <div id="column-header-2" className="flex justify-center">
                 <Circle  
                   size="sm"
                   className="bg-[#654c91]"
                 />
-                <h3 className="text-[#606266] font-atkinson -mt-[2px] ml-6">
+                <h3 className="text-[#606266] font-atkinson -mt-[2px] ml-6 text-sm sm:text-base">
                   DOING ({doing.length})
                 </h3>                
               </div>
@@ -233,13 +234,13 @@ function Home() {
                 />
               ))}
             </div>
-            <div className="flex-1">
+            <div className="flex-1 flex flex-col items-center">
               <div id="column-header-3" className="flex justify-center">
                 <Circle  
                   size="sm"
                   className="bg-[#5bb377]"
                 />
-                <h3 className="text-[#606266] font-atkinson -mt-[2px] ml-6">
+                <h3 className="text-[#606266] font-atkinson -mt-[2px] ml-6 text-sm sm:text-base">
                   DONE ({done.length})
                 </h3>                
               </div>

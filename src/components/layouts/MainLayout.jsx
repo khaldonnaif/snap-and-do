@@ -11,9 +11,9 @@ function MainLayout({
 }) {
 
   const widthMap = {
-    "w-64": {margin: "ml-64", width: "w-[calc(100%-16rem)]"},
-    "w-80": {margin: "ml-80", width: "w-[calc(100%-20rem)]"},
-    "w-96": {margin: "ml-96", width: "w-[calc(100%-24rem)]"}
+    "w-64": {margin: "md:ml-64", width: "md:w-[calc(100%-16rem)]"},
+    "w-80": {margin: "md:ml-80", width: "md:w-[calc(100%-20rem)]"},
+    "w-96": {margin: "md:ml-96", width: "md:w-[calc(100%-24rem)]"}
   };
 
   const { margin, width } = sidePanelOpen
@@ -24,6 +24,7 @@ function MainLayout({
     <div className={`
       relative
       min-h-screen
+      w-full
       ${margin}
       ${width}
       transition-all duration-300

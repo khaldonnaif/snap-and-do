@@ -28,13 +28,13 @@ function TaskCard({ task, onMoveTask, onDeleteTask, onExpand }) {
       >
         <div className={`absolute left-0 h-[100%] top-0 w-2 rounded-2xl ${priorityBgColors[task.priority]}`}></div>
         <div 
-          className="flex justify-between items-center px-4 py-2 bg-[#2a2a35] cursor-pointer"
+          className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-3 sm:px-4 py-2 bg-[#2a2a35] cursor-pointer gap-2"
           onClick={onExpand}  
         >
-          <p className="text-[#e3e3e3] text-sm font-medium">{task.title}</p>
-          <div className="flex gap-2 items-center">
+          <p className="text-[#e3e3e3] text-xs sm:text-sm font-medium line-clamp-2">{task.title}</p>
+          <div className="flex gap-2 items-center w-full sm:w-auto">
             <Button 
-              className="bg-[#333340] hover:bg-[#3a3a42] rounded px-2 py-1 text-xs text-white transition-colors"
+              className="bg-[#333340] hover:bg-[#3a3a42] rounded px-2 py-1 text-xs text-white transition-colors flex-1 sm:flex-none"
               onClick={(e) => {e.stopPropagation(); setDropdownOpen(!dropdownOpen)}}
             >
               Move
@@ -47,7 +47,7 @@ function TaskCard({ task, onMoveTask, onDeleteTask, onExpand }) {
             </Button>
           </div>
         </div>
-        <div className="flex justify-between items-center px-4 py-2 text-xs">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-3 sm:px-4 py-2 text-xs gap-2">
           <div className="flex gap-3 items-center">
             <span className={priorityTextColors[task.priority]}>{task.priority}</span>
             <span className="text-gray-600">{new Date(task.createdAt).toLocaleDateString()}</span>

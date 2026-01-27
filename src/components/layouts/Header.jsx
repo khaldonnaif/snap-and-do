@@ -8,7 +8,7 @@ function Header({
   className=""
 }) {
   return (
-    <div className={`header ${className}`}>
+    <div className={`header flex-col sm:flex-row gap-4 sm:gap-0 ${className}`}>
       {children}
     </div>
   );
